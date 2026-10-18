@@ -1,0 +1,25 @@
+title: "Jiye · 文字与笔记"
+description: "Jiye 的个人博客。记录阅读、学习，以及还在生长的想法。"
+url: "https://jiyesun.github.io"
+baseurl: ""
+lang: zh-CN
+timezone: America/Indiana/Indianapolis
+markdown: kramdown
+permalink: /writing/:title/
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      kind: blog
+      sample: false
+exclude:
+  - README.md
+  - templates
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - package.json
+  - package-lock.json

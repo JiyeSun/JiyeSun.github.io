@@ -1,0 +1,48 @@
+---
+layout: default
+active: home
+---
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-main">
+      <p class="eyebrow"><span class="tiny-square"></span> JIYE’S PERSONAL JOURNAL</p>
+      <h1 id="hero-title">把想法写下来，<br /><span>慢慢想明白。</span></h1>
+      <p class="hero-description">关于阅读、学习和日常的公开笔记。<br />有完整的文章，也有还在生长的想法。</p>
+      <a class="text-link" href="#latest">翻开看看 <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="hero-aside" aria-hidden="true">
+      <span class="aside-index">01 — THE NOTEBOOK</span>
+      <svg class="notebook-art" viewBox="0 0 300 240" fill="none">
+        <ellipse cx="150" cy="210" rx="103" ry="11" fill="#e9e5dc" />
+        <g transform="rotate(-9 150 125)">
+          <path d="M67 42h170v169H67z" fill="#e5e1d7" stroke="#c4c0b4" />
+          <path d="M61 34h170v171H61z" fill="#fffef9" stroke="#bdb8aa" />
+          <path d="M80 34v171" stroke="#b9c0b1" />
+          <path d="M97 69h107M97 90h107M97 111h82M97 153h107M97 174h73" stroke="#d9d6cc" />
+          <path d="M99 129c17-18 25 18 43 0s28 15 48-2" stroke="#66735c" stroke-width="2" />
+          <path d="m199 17 8 3-38 116-9 10 1-14z" fill="#a4523a" />
+          <path d="m160 146 2-14 7 4z" fill="#dbc9a7" /><path d="m160 146 2-5 2 2z" fill="#383d33" />
+          <path d="m201 18 2 1-37 112-2-1z" fill="#bf7d62" />
+          <path d="M56 56h10M56 81h10M56 106h10M56 131h10M56 156h10M56 181h10" stroke="#7d8374" stroke-width="3" stroke-linecap="round" />
+        </g>
+      </svg>
+      <p>A small place<br />for thoughts in progress.</p>
+      <span class="aside-caption">保持好奇 · 持续记录</span>
+    </div>
+  </section>
+  <div class="home-grid">
+    <section id="latest" aria-labelledby="latest-title">
+      <div class="section-heading"><h2 id="latest-title">最近写下的 <span>RECENT ENTRIES</span></h2><a href="/archive/">全部记录 <span aria-hidden="true">↗</span></a></div>
+      {% for post in site.posts limit:5 %}{% include post-row.html post=post %}{% else %}<p class="empty-state">这里留给第一篇记录。</p>{% endfor %}
+    </section>
+    <aside class="sidebar">
+      <p class="eyebrow">HELLO, I’M JIYE</p>
+      <h2>很高兴在这里<br />遇见你。</h2>
+      <p>这是我的个人博客，也是一本可以不断补充的笔记本。</p>
+      <a class="text-link" href="/about/">关于这个角落 <span aria-hidden="true">↗</span></a>
+      <div class="sidebar-divider"></div>
+      <p class="small-label">在这里，你可以找到</p>
+      <a class="directory-link" href="/blog/"><span>01</span>文章<small>展开说说</small><b aria-hidden="true">↗</b></a>
+      <a class="directory-link" href="/notes/"><span>02</span>短笔记<small>随手记下</small><b aria-hidden="true">↗</b></a>
+    </aside>
+  </div>
