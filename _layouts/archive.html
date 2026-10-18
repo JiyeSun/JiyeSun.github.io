@@ -1,0 +1,12 @@
+---
+layout: default
+---
+{% if page.filter_kind %}{% assign entries = site.posts | where: 'kind', page.filter_kind %}{% else %}{% assign entries = site.posts %}{% endif %}
+<header class="page-intro"><p class="eyebrow">THE JOURNAL / {{ page.eyebrow }}</p><h1>{{ page.title }}<span class="heading-dot">.</span></h1><p>{{ page.subtitle }}</p></header>
+<section class="archive-section" aria-label="{{ page.title }}">
+  <div class="archive-tools"><div class="archive-tabs"><a href="/archive/" {% unless page.filter_kind %}aria-current="page"{% endunless %}>全部</a><a href="/blog/" {% if page.filter_kind == 'blog' %}aria-current="page"{% endif %}>文章</a><a href="/notes/" {% if page.filter_kind == 'note' %}aria-current="page"{% endif %}>短笔记</a></div><label class="search-label"><span>搜索</span><input type="search" id="post-search" placeholder="搜索标题、简介或标签"></label></div>
+  <p class="entry-count" aria-live="polite" id="result-count">{{ entries.size }} 篇记录</p>
+  {% for post in entries %}{% include post-row.html post=post %}{% endfor %}
+  <p id="no-results" class="empty-state" {% if entries.size > 0 %}hidden{% endif %}>没有找到匹配的记录，试试其他关键词。</p>
+</section>
+<script src="/assets/search.js" defer></script>

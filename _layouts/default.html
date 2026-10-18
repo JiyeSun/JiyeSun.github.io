@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% assign description = page.description | default: site.description %}
+    <meta name="description" content="{{ description | escape }}">
+    <meta name="theme-color" content="#f7f6f2">
+    <meta property="og:title" content="{% if page.title %}{{ page.title | escape }} · Jiye{% else %}{{ site.title | escape }}{% endif %}">
+    <meta property="og:description" content="{{ description | escape }}">
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:locale" content="zh_CN">
+    {% if page.noindex %}<meta name="robots" content="noindex">{% endif %}
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="alternate" type="application/rss+xml" title="Jiye · 文字与笔记" href="/rss.xml">
+    <title>{% if page.title %}{{ page.title | escape }} · Jiye{% else %}{{ site.title | escape }}{% endif %}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳至正文</a>
+    <header class="site-header wrap">
+      <a class="wordmark" href="/" aria-label="Jiye，返回首页">Jiye<span class="wordmark-dot">.</span><span class="wordmark-sub">文字与笔记</span></a>
+      <nav aria-label="主导航">
+        <a href="/" {% if page.active == 'home' %}aria-current="page"{% endif %}>首页</a>
+        <a href="/blog/" {% if page.active == 'blog' or page.kind == 'blog' %}aria-current="page"{% endif %}>文章</a>
+        <a href="/notes/" {% if page.active == 'notes' or page.kind == 'note' %}aria-current="page"{% endif %}>短笔记</a>
+        <a href="/about/" {% if page.active == 'about' %}aria-current="page"{% endif %}>关于</a>
+      </nav>
+    </header>
+    <main id="main" class="wrap">{{ content }}</main>
+    <footer class="site-footer wrap">
+      <div><a class="footer-name" href="/">Jiye.</a><span>写下来，让想法有迹可循。</span></div>
+      <div class="footer-links"><a href="https://github.com/JiyeSun">GitHub <span aria-hidden="true">↗</span></a><a href="/rss.xml">RSS 订阅 <span aria-hidden="true">↗</span></a><span>© {{ site.time | date: '%Y' }} Jiye</span></div>
+    </footer>
+  </body>
+</html>

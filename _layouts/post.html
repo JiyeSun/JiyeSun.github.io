@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article class="reading-layout">
+  <header class="reading-header">
+    <a class="back-link" href="{% if page.kind == 'note' %}/notes/{% else %}/blog/{% endif %}">← 返回{% if page.kind == 'note' %}短笔记{% else %}文章{% endif %}</a>
+    <div class="reading-meta"><span>{% if page.kind == 'note' %}短笔记{% else %}文章{% endif %}</span><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y.%m.%d' }}</time>{% if page.sample %}<span class="sample-label">示例内容</span>{% endif %}</div>
+    <h1>{{ page.title | escape }}</h1><p class="reading-description">{{ page.description | escape }}</p>
+    <div class="reading-author"><span class="author-mark" aria-hidden="true">J.</span><span>Jiye</span>{% for tag in page.tags %}<span class="tag">{{ tag | escape }}</span>{% endfor %}</div>
+  </header>
+  {% if page.sample %}<aside class="sample-notice">这是一篇展示排版的示例，可替换为正式文章。</aside>{% endif %}
+  <div class="prose">{{ content }}</div>
+  <div class="end-mark" aria-hidden="true">✳</div>
+  {% assign adjacent = page.previous | default: page.next %}
+  {% if adjacent %}<nav class="next-post" aria-label="继续阅读"><span class="eyebrow">再翻一篇</span><a href="{{ adjacent.url }}">{{ adjacent.title | escape }} <span aria-hidden="true">↗</span></a></nav>{% endif %}
+</article>
